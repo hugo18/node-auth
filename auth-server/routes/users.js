@@ -1,13 +1,8 @@
 import express from 'express';
-import {hashPassword} from '../utils/bcryptHelpers.js';
+import {hashPassword} from '../../utils/bcryptHelpers.js';
 import { authenticateToken } from '../../middleware/authMiddleware.js';
 import {users} from '../../users.js';
 const router = express.Router();
-
-
-router.get('/users', authenticateToken, (req, res) => {
-    res.json({users});
-});
 
 router.post('/users', async (req, res) => {
     const {username, password} = req.body;
