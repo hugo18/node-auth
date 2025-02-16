@@ -1,9 +1,10 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import { comparePasswords } from '../utils/bcryptHelpers.js';
-const router = express.Router();
-const users = [];    
+import {users} from '../../users.js';
 
+const router = express.Router();
+    
 router.post('/login', async (req, res) => {
     const {username, password} = req.body;
     const user = users.find((u) => u.username === username);    
