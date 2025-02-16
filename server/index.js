@@ -1,10 +1,16 @@
 import express from 'express';
 import {config} from '../config/env.js';
 import ordersRouter from './routes/orders.js';
+import usersRouter from './routes/users.js';
+import authRouter from './routes/auth.js';
 
 const app = express();
 
+app.use(express.json());
 app.use('/api', ordersRouter);
+app.use('/api', usersRouter);
+app.use('/api', authRouter);
+
 
 app.get('/', (req, res) => {
     res.send('App modular Node.js');
